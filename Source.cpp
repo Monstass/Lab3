@@ -158,10 +158,10 @@ float mathexp(float ** array, float l_s, float l_e, float c_s, float c_e)
     {
         for (int j = c_s - 1; j < c_e; j++)
         {
-            sh += 1;
+            s += 1;
             sum += array[i][j];
         }
     }
     average = sum / s;
-    return (average);
+    return (average); 
 }
