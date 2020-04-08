@@ -1,10 +1,13 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <iomanip>
 
 float made_of_matrix(float**, int, int);
 float show_matrix(float**, int, int);
 float transform_of_matrix(float**, float, float, float, float);
+float math_exp(float**, float, float, float, float);
+
 using namespace std;
 int main()
 {
@@ -106,6 +109,7 @@ int main()
     system("cls");
 
     transform_of_matrix(A, line_s, line_e, column_s, column_e);
+    math_exp(A, line_s, line_e, column_s, column_e);
 
     for (int i = 0; i < lines; i++)
         delete[] A[i];
@@ -151,9 +155,9 @@ float transform_of_matrix(float** array, float l_s, float l_e, float c_s, float 
     }
     return 0;
 }
-float mathexp(float ** array, float l_s, float l_e, float c_s, float c_e)
+float math_exp(float ** array, float l_s, float l_e, float c_s, float c_e)
 {
-    int average, s = 0, sum = 0;
+    float sum = 0, average, s = 0;
     for (int i = l_s - 1; i < l_e; i++)
     {
         for (int j = c_s - 1; j < c_e; j++)
@@ -163,5 +167,11 @@ float mathexp(float ** array, float l_s, float l_e, float c_s, float c_e)
         }
     }
     average = sum / s;
-    return (average); 
+    cout << endl <<"Math exp.: " << fixed << setprecision(2) << average;
+    return (0); 
+}
+
+float finding_mode()
+{
+    return 0;
 }
