@@ -7,6 +7,7 @@ float made_of_matrix(float**, int, int);
 float show_matrix(float**, int, int);
 float transform_of_matrix(float**, float, float, float, float);
 float math_exp(float**, float, float, float, float);
+float finding_mode(float**, float, float, float, float);
 
 using namespace std;
 int main()
@@ -110,6 +111,7 @@ int main()
 
     transform_of_matrix(A, line_s, line_e, column_s, column_e);
     math_exp(A, line_s, line_e, column_s, column_e);
+    finding_mode(A, line_s, line_e, column_s, column_e);
 
     for (int i = 0; i < lines; i++)
         delete[] A[i];
@@ -131,7 +133,7 @@ float made_of_matrix(float** array, int lines, int columns)
 
 float show_matrix(float** array, int lines, int columns)
 {
-    cout << "----Source matrix----" << endl;
+    cout << "----Source matrix----";
     for (int i = 0; i < lines; i++)
     {
         cout << endl;
@@ -145,6 +147,7 @@ float show_matrix(float** array, int lines, int columns)
 
 float transform_of_matrix(float** array, float l_s, float l_e, float c_s, float c_e)
 {
+    cout << "--=Transormed matrix---";
     for (int i = l_s - 1; i < l_e; i++)
     {
         cout << endl;
@@ -171,7 +174,34 @@ float math_exp(float ** array, float l_s, float l_e, float c_s, float c_e)
     return (0); 
 }
 
-float finding_mode()
+float finding_mode(float** array, float l_s, float l_e, float c_s, float c_e)
 {
+    float B[50], max_value = 0, max_count = -1;
+    int k = -1;
+    for (int i = l_s - 1; i < l_e; i++)
+    {
+        for (int j = c_s - 1; j < c_e; j++)
+        {
+            k += 1;
+            B[k] = array[i][j];
+        }
+    }
+
+    for (int i = 0; i < k; ++i)
+    {
+        float count = 0;
+        for (int j = 0; j < k; ++j)
+        {
+            if (B[j] == B[i])
+                ++count;
+        }
+        if (count > max_count)
+        {
+            max_count = count;
+            max_value = B[i];
+        }
+    }
+
+    cout << endl << "Mode: " << max_value;
     return 0;
 }
